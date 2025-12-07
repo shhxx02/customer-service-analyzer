@@ -53,7 +53,17 @@ def score_message(text: str) -> Dict[str, float | str]:
 
     scores = _sia.polarity_scores(text)
     compound = scores.get("compound", 0.0)
+    lower_text = text.lower()
 
+    # ---- Special handling for "borderline neutral" phrases ----
+    # For customer service, phrases like "not bad" or "ok" are closer to Neutral.
+    for phrase in _NEUTRAL_PHRASES:
+        if phrase in lower_text:
+            scores["compound"] = 0.0
+            scores["label"] = "Neutral"
+            return scores
+
+    # ---- Normal VADER threshold-based classification ----
     if compound >= 0.05:
         label = "Positive"
     elif compound <= -0.05:
@@ -63,6 +73,7 @@ def score_message(text: str) -> Dict[str, float | str]:
 
     scores["label"] = label
     return scores
+
 
 
 # -------------------------------------------------
@@ -144,6 +155,20 @@ _URGENT_WORDS = [
     "urgent", "asap", "immediately", "right now", "soon", "please help", "help me",
 ]
 
+_NEUTRAL_PHRASES = [
+    "not bad",
+    "ok",
+    "okay",
+    "its ok",
+    "it's ok",
+    "its fine",
+    "it's fine",
+    "fine",
+    "average",
+    "not negative",
+]
+
+
 
 def urgency_score(text: str) -> float:
     """
@@ -185,6 +210,7 @@ def urgency_score(text: str) -> float:
 def sentence_level_scores(text: str) -> List[Dict[str, str | float]]:
     """
     Split text into sentences and return sentiment for each.
+    Uses score_message() so logic is consistent.
     """
     if not text:
         return []
@@ -195,17 +221,15 @@ def sentence_level_scores(text: str) -> List[Dict[str, str | float]]:
     for s in sentences:
         if not s:
             continue
-        scores = _sia.polarity_scores(s)
-        compound = scores.get("compound", 0.0)
-        if compound >= 0.05:
-            label = "Positive"
-        elif compound <= -0.05:
-            label = "Negative"
-        else:
-            label = "Neutral"
-        result.append({"sentence": s, "compound": compound, "label": label})
+        sc = score_message(s)
+        result.append({
+            "sentence": s,
+            "compound": sc["compound"],
+            "label": sc["label"],
+        })
 
     return result
+
 
 
 def worst_sentence(text: str) -> Dict[str, str | float]:

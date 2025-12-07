@@ -22,6 +22,12 @@ def test_score_message_positive():
     assert result["label"] == "Positive"
     assert result["compound"] > 0.1
 
+def test_neutral_phrases_override():
+    res1 = score_message("not bad")
+    res2 = score_message("ok")
+    assert res1["label"] == "Neutral"
+    assert res2["label"] == "Neutral"
+
 
 def test_score_message_negative():
     result = score_message("Your service disappoints me. I am very unhappy.")
