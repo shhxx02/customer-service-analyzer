@@ -73,6 +73,20 @@ http://localhost:8501
 
 ---
 
+## Project Structure
+
+```
+customer-service-analyzer/
+│
+├── app.py                 # Main Streamlit application (Enhanced UI)
+├── sentiment_utils.py     # Sentiment analysis logic and utilities
+├── requirements.txt       # Python dependencies
+├── README.md              # Project documentation
+└── tests/                 # Test suite (optional)
+    └── test_sentiment.py
+```
+
+
 ## Sentiment Logic Overview
 
 ### Message-Level Sentiment (Tier 2)
@@ -137,16 +151,6 @@ Tests validate:
 
 ---
 
-## Project Structure
-
-customer-service-analyzer/
-│
-├── app.py                 # Main Streamlit application (Enhanced UI)
-├── sentiment_utils.py     # Sentiment analysis logic and utilities
-├── requirements.txt       # Python dependencies
-├── README.md             # Project documentation
-└── tests/                # Test suite (optional)
-    └── test_sentiment.py
 
 
 
