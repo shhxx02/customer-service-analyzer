@@ -38,7 +38,7 @@ https://customer-service-analyzer.streamlit.app/
 ---
 
 ### 💬 Chat Interface + Sentiment Badges
-![Chat Demo](screenshots/chattdemo.png)
+![Chat Demo](screenshots/chatdemo.png)
 
 ---
 
