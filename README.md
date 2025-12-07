@@ -7,7 +7,7 @@ Developed for the LiaPlus Assignment (Tier 1 + Tier 2 + enhancements).
 
 ## 🔗 Live Demo
 Run the app here:  
-https://your-app-name.streamlit.app
+https://customer-service-analyzer.streamlit.app/
 
 
 ## Features
@@ -155,6 +155,7 @@ Tests validate:
 - Urgency scoring
 
 ---
+
 
 
 
