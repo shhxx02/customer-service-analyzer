@@ -25,6 +25,26 @@ Developed for the LiaPlus Assignment (Tier 1 + Tier 2 + enhancements).
 
 ---
 
+## 📸 Screenshots
+
+### 🟦 Main Interface
+![Main Page](screenshots/mainpage.png)
+
+---
+
+### 💬 Chat Interface + Sentiment Badges
+![Chat Demo](screenshots/chattdemo.png)
+
+---
+
+### 📊 Right-Side Analysis Panel
+![Analysis Panel](screenshots/conversation_analysis.png)
+
+---
+
+### 📈 Sentiment Trend Graph
+![Sentiment Trend](screenshots/sentiment_trend.png)
+
 ## Quick Start
 
 ### Requirements
