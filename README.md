@@ -1,7 +1,6 @@
 # Customer Service Call Analyzer
 
 A clean, interactive chatbot that performs real-time sentiment analysis, conversation insights, escalation detection, and intent/urgency recognition for customer support scenarios.  
-Developed for the LiaPlus Assignment (Tier 1 + Tier 2 + enhancements).
 
 ---
 
@@ -175,6 +174,7 @@ Tests validate:
 - Urgency scoring
 
 ---
+
 
 
 
